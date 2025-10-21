@@ -174,11 +174,11 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
               <div className="flex justify-between items-center mb-12 flex-col sm:flex-row">
                   <h2 className="text-4xl font-bold text-gray-800 mb-6 sm:mb-0">How it works</h2>
-                  <div className="flex border border-gray-300 p-1 rounded-full text-sm font-semibold shadow-inner">
+                  <div className="flex border border-gray-300 p-1 rounded-full text-sm font-semibold  shadow-inner">
                       <button onClick={() => setIsHiringView(true)}
-                      className={`px-6 py-2 rounded-full transition duration-500 ${isHiringView ? 'bg-black text-white shadow-md' : 'bg-transparent text-gray-700 hover:bg-gray-100'}`}
+                      className={`px-6 py-2 rounded-full transition duration-500 cursor-pointer ${isHiringView ? 'bg-black text-white shadow-md' : 'bg-transparent text-gray-700 hover:bg-gray-100'}`}
                       >For hiring</button>
-                      <button onClick={() => setIsHiringView(false)} className={`px-6 py-2 rounded-full transition duration-500 ${!isHiringView ? 'bg-black text-white shadow-md' : 'bg-transparent text-gray-700 hover:bg-gray-100'}`}>For finding work</button>
+                      <button onClick={() => setIsHiringView(false)} className={`px-6 py-2 rounded-full transition duration-500 cursor-pointer ${!isHiringView ? 'bg-black text-white shadow-md' : 'bg-transparent text-gray-700 hover:bg-gray-100'}`}>For finding work</button>
                   </div>
               </div>
               <div className="grid md:grid-cols-3 gap-8">
@@ -189,20 +189,90 @@ export default function Home() {
                                   <div className={`w-full h-full relative ${step.gradient} flex items-center justify-center`}>                                     
                                       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${step.image})`, backgroundPosition: 'center' }}>
                                     </div>
-                                  </div>) : (
-                                  <img 
-                                      src={step.image} 
-                                      alt={step.title} 
-                                      className="w-full h-full object-cover rounded-lg" 
-                                  />
-                              )}
-                          </div>
-                          <h3 className="text-xl font-medium text-gray-800 mt-2">{step.title}</h3>
-                      </div>
-                  ))}
-              </div>
-          </div>
+                                  </div>) : (<img src={step.image}  alt={step.title} className="w-full h-full object-cover rounded-lg" />)}
+  </div>
+<h3 className="text-xl font-medium text-gray-800 mt-2">{step.title}</h3>
+</div>
+))}
+</div>
+<div className="bg-gray-50 py-20 px-8 md:px-16 w-full">
+  <div className="max-w-7xl mx-auto text-center">
+    <h2 className="text-4xl font-bold text-gray-900 mb-16">
+      Clients only pay after hiring
+    </h2>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">      
+      <div className="bg-white  border bg-black rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 flex flex-col justify-between">
+        <div>
+          <h4 className="text-sm font-semibold text-gray-500 tracking-widest mb-2">
+            MARKETPLACE
+          </h4>
+          <h3 className="text-2xl font-bold text-gray-900 mb-3">
+            5% fee after hiring
+          </h3>
+          <p className="text-gray-600 mb-6">
+            For starting out on our global freelancer marketplace
+          </p>
+          <ul className="space-y-3 text-left text-gray-700">
+            <li>✅ Free to post jobs on our global freelance marketplace</li>
+            <li>✅ AI-powered features</li>
+            <li>✅ Collaboration and project tracking tools</li>
+          </ul>
+        </div>
+        <button className="mt-8 border border-green-400 text-sky-400 font-semibold py-3 rounded-full hover:bg-sky-200 hover:text-black transition-all duration-300 cursor-pointer">
+          Get started for free
+        </button>
+      </div>
+      <div className="bg-white border bg-black rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-8 flex flex-col justify-between relative">
+        <span className="absolute top-4 right-4 bg-black text-white text-xs font-semibold px-3 py-1 rounded-full">
+          Popular
+        </span>
+        <div>
+          <h4 className="text-sm font-semibold text-gray-500 tracking-widest mb-2">
+            BUSINESS PLUS
+          </h4>
+          <h3 className="text-2xl font-bold text-gray-900 mb-3">
+            10% fee after hiring
+          </h3>
+          <p className="text-gray-600 mb-6">
+            For growing businesses with premium features and support
+          </p>
+          <ul className="space-y-3 text-left text-gray-700">
+            <li>✅ Access to pre-screened top 1% of talent</li>
+            <li>✅ Premium customer support 24/7</li>
+            <li>✅ 60 invites per job post</li>
+          </ul>
+        </div>
+        <button className="mt-8 border border-green-400 text-sky-400 font-semibold py-3 rounded-full hover:bg-sky-200 hover:text-black transition-all duration-300 cursor-pointer">
+          Get started for free
+        </button>
+      </div>
+      <div className="bg-white border bg-black rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 flex flex-col justify-between">
+        <div>
+          <h4 className="text-sm font-semibold text-gray-500 tracking-widest mb-2">
+            ENTERPRISE
+          </h4>
+          <h3 className="text-2xl font-bold text-gray-900 mb-3">
+            Contact sales
+          </h3>
+          <p className="text-gray-600 mb-6">
+            For scaling comprehensive solutions to the entire organization
+          </p>
+          <ul className="space-y-3 text-left text-gray-700">
+            <li>✅ Dedicated account and program management</li>
+            <li>✅ SSO and integrations</li>
+            <li>✅ Unlimited invites per job</li>
+          </ul>
+        </div>
+        <button className="mt-8 border border-green-400 text-sky-400 font-semibold py-3 rounded-full hover:bg-sky-200 hover:text-black transition-all duration-300 cursor-pointer">
+          Contact sales
+        </button>
       </div>
     </div>
+  </div>
+</div>
+
+</div>
+ </div>
+   </div>
   );
 }
