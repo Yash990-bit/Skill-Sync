@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react'; 
 import { Link } from 'react-router-dom';
 import backgroundImage from '../assets/civer.png';
 import Navbar from '../components/Navbar.jsx';
@@ -13,8 +13,54 @@ import MusicIcon from '../assets/audio-visual.png';
 import BusinessIcon from '../assets/cooperation.png';
 import ConsultingIcon from '../assets/customer-service.png';
 
+import VideoPlaceholderA from '../assets/guide.webp'; 
+import VideoPlaceholderB from '../assets/post.jpg'; 
+import StepTwoHiring from '../assets/for.webp'; 
+import StepThreeHiring from '../assets/it.jpeg'; 
+import StepTwoFinding from '../assets/find.webp'; 
+import StepThreeFinding from '../assets/work.webp'; 
+
+const hiringSteps = [
+    { 
+        image: VideoPlaceholderA, 
+        title: 'Posting jobs is always free', 
+        isSpecial: true, 
+        logo: 'upwork',
+        gradient: 'bg-gradient-to-br from-yellow-100 to-green-200'
+    },
+    { 
+        image: StepTwoHiring, 
+        title: 'Get proposals and hire' 
+    },
+    { 
+        image: StepThreeHiring, 
+        title: 'Pay when work is done' 
+    }
+];
+
+const findingSteps = [
+    { 
+        image: VideoPlaceholderB, 
+        title: 'Find clients and remote jobs',
+        isSpecial: true, 
+        logo: null,
+        gradient: 'bg-black'
+    },
+    { 
+        image: StepTwoFinding, 
+        title: 'Submit proposals for work' 
+    },
+    { 
+        image: StepThreeFinding, 
+        title: 'Get paid as you deliver work' 
+    }
+];
+
 
 export default function Home() {
+  const [isHiringView, setIsHiringView] = useState(true);
+  const currentSteps = isHiringView ? hiringSteps : findingSteps;
+  
   const topCategories = [
     { name: 'Programming & Tech', icon: ProgrammingIcon },
     { name: 'Graphics & Design', icon: GraphicsIcon },
@@ -103,6 +149,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      
       <div className="bg-white py-12 px-8 md:px-16 w-full">
         <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-4 text-center">
           {topCategories.map((cat) => (
@@ -122,7 +169,40 @@ export default function Home() {
           ))}
         </div>
       </div>
-
+      
+      <div className="bg-white py-20 px-8 md:px-16 w-full">
+          <div className="max-w-7xl mx-auto">
+              <div className="flex justify-between items-center mb-12 flex-col sm:flex-row">
+                  <h2 className="text-4xl font-bold text-gray-800 mb-6 sm:mb-0">How it works</h2>
+                  <div className="flex border border-gray-300 p-1 rounded-full text-sm font-semibold shadow-inner">
+                      <button onClick={() => setIsHiringView(true)}
+                      className={`px-6 py-2 rounded-full transition duration-500 ${isHiringView ? 'bg-black text-white shadow-md' : 'bg-transparent text-gray-700 hover:bg-gray-100'}`}
+                      >For hiring</button>
+                      <button onClick={() => setIsHiringView(false)} className={`px-6 py-2 rounded-full transition duration-500 ${!isHiringView ? 'bg-black text-white shadow-md' : 'bg-transparent text-gray-700 hover:bg-gray-100'}`}>For finding work</button>
+                  </div>
+              </div>
+              <div className="grid md:grid-cols-3 gap-8">
+                  {currentSteps.map((step, index) => (
+                      <div key={index} className="flex flex-col items-start">
+                          <div className={`w-full rounded-lg overflow-hidden mb-4 aspect-video shadow-xl relative`}>
+                              {step.isSpecial ? (
+                                  <div className={`w-full h-full relative ${step.gradient} flex items-center justify-center`}>                                     
+                                      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${step.image})`, backgroundPosition: 'center' }}>
+                                    </div>
+                                  </div>) : (
+                                  <img 
+                                      src={step.image} 
+                                      alt={step.title} 
+                                      className="w-full h-full object-cover rounded-lg" 
+                                  />
+                              )}
+                          </div>
+                          <h3 className="text-xl font-medium text-gray-800 mt-2">{step.title}</h3>
+                      </div>
+                  ))}
+              </div>
+          </div>
+      </div>
     </div>
   );
 }
