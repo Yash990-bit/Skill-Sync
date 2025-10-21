@@ -92,8 +92,7 @@ export default function Home() {
             <input
               type="text"
               placeholder="Search for any service..."
-              className="flex-grow p-4 text-gray-800 text-lg border-none focus:outline-none"
-            />
+              className="flex-grow p-4 text-gray-800 text-lg border-none focus:outline-none"/>
             <button className="bg-black text-white p-4 flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -218,7 +217,7 @@ export default function Home() {
             <li>✅ Collaboration and project tracking tools</li>
           </ul>
         </div>
-        <button className="mt-8 border border-green-400 text-sky-400 font-semibold py-3 rounded-full hover:bg-sky-200 hover:text-black transition-all duration-300 cursor-pointer">
+        <button className="mt-8 border border-black bg-transparent text-sky-400 font-semibold py-3 rounded-full hover:bg-sky-200 hover:text-black transition-all duration-300 cursor-pointer">
           Get started for free
         </button>
       </div>
@@ -242,9 +241,9 @@ export default function Home() {
             <li>✅ 60 invites per job post</li>
           </ul>
         </div>
-        <button className="mt-8 border border-green-400 text-sky-400 font-semibold py-3 rounded-full hover:bg-sky-200 hover:text-black transition-all duration-300 cursor-pointer">
-          Get started for free
-        </button>
+        <button className="mt-8 border border-black bg-transparent text-sky-400 font-semibold py-3 rounded-full hover:bg-sky-200 hover:text-black transition-all duration-300 cursor-pointer">
+        Get started for free</button>
+
       </div>
       <div className="bg-white border bg-black rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 flex flex-col justify-between">
         <div>
@@ -263,16 +262,15 @@ export default function Home() {
             <li>✅ Unlimited invites per job</li>
           </ul>
         </div>
-        <button className="mt-8 border border-green-400 text-sky-400 font-semibold py-3 rounded-full hover:bg-sky-200 hover:text-black transition-all duration-300 cursor-pointer">
+        <button className="mt-8 border border-black bg-transparent text-sky-400 font-semibold py-3 rounded-full hover:bg-sky-200 hover:text-black transition-all duration-300 cursor-pointer">
           Contact sales
         </button>
       </div>
     </div>
   </div>
 </div>
-
 </div>
- </div>
-   </div>
+</div>
+</div>
   );
 }
