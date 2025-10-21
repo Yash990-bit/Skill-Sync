@@ -25,7 +25,6 @@ const hiringSteps = [
         image: VideoPlaceholderA, 
         title: 'Posting jobs is always free', 
         isSpecial: true, 
-        logo: 'upwork',
         gradient: 'bg-gradient-to-br from-yellow-100 to-green-200'
     },
     { 
@@ -121,27 +120,20 @@ export default function Home() {
               <Link
                 key={category.name}
                 to={category.link}
-                className="flex items-center space-x-2 px-5 py-3 border border-gray-600 rounded-full text-sm font-medium hover:bg-gray-700 transition duration-200"
-              >
+                className="flex items-center space-x-2 px-5 py-3 border border-gray-600 rounded-full text-sm font-medium hover:bg-gray-700 transition duration-200">
                 <span>{category.name}</span>
-                {category.new && (
-                  <span className="ml-2 bg-green-500 text-black text-xs font-bold px-2 py-0.5 rounded-full uppercase">
-                    NEW
-                  </span>
-                )}
+                {category.new}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 ml-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  strokeWidth={2}
-                >
+                  strokeWidth={2}>
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
               </Link>
             ))}
