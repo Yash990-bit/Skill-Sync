@@ -33,7 +33,7 @@ export default function GuidesSlider() {
   const scroll = (dir) => {
     const container = containerRef.current;
     const scrollAmount = dir === "left" ? -400 : 400;
-    container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    container.scrollBy({left:scrollAmount,behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -44,8 +44,8 @@ export default function GuidesSlider() {
   }, []);
 
   return (
-    <div className="relative bg-blue-200 py-16 px-6 md:px-16">
-      <div className="max-w-7xl mx-auto">
+    <div className="relative bg-blue-100 py-16 px-6 md:px-16">
+      <div className="max-w-7xl mx-auto bg-blue-50 rounded-3xl shadow-lg p-10 relative overflow-hidden">
         <div className="flex justify-between items-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             Guides to help you grow

@@ -263,6 +263,21 @@ export default function Home() {
 </div>
 </div>
 <GuidesSlider />
+
+<div className="flex items-center justify-center py-16 px-6">
+  <div className="text-center text-gray-900 max-w-3xl p-8 md:p-12 rounded-2xl shadow-2xl bg-white/90">
+    <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6">
+      Unlock the World of Talent, Right at Your{" "}
+      <span className="text-gray-500">Fingertips</span>
+    </h1>
+    <p className="mb-6 text-base md:text-lg text-gray-700">
+      Find the best professionals and services, anytime, anywhere.
+    </p>
+    <button className="px-6 py-2 md:px-8 md:py-3 bg-gray-500 text-white font-bold rounded-full text-base md:text-lg shadow-lg hover:text-black hover:scale-105 transition-transform duration-300 cursor-pointer">
+      Join Skill Sync
+    </button>
+  </div>
 </div>
-  );
-}
+
+</div>
+  )};
