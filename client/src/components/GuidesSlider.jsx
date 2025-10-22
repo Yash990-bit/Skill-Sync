@@ -23,7 +23,6 @@ export default function GuidesSlider() {
   const checkScroll = () => {
     const container = containerRef.current;
     if (!container) return;
-
     setShowLeft(container.scrollLeft > 0);
     setShowRight(
       container.scrollLeft < container.scrollWidth - container.clientWidth - 10
@@ -32,8 +31,8 @@ export default function GuidesSlider() {
 
   const scroll = (dir) => {
     const container = containerRef.current;
-    const scrollAmount = dir === "left" ? -400 : 400;
-    container.scrollBy({left:scrollAmount,behavior: "smooth" });
+    const scrollAmount = dir === "left" ? -300 : 300;
+    container.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -44,10 +43,10 @@ export default function GuidesSlider() {
   }, []);
 
   return (
-    <div className="relative bg-blue-100 py-16 px-6 md:px-16">
-      <div className="max-w-7xl mx-auto bg-blue-50 rounded-3xl shadow-lg p-10 relative overflow-hidden">
-        <div className="flex justify-between items-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+    <div className="relative bg-blue-100 py-12 px-4 sm:px-8 md:px-16">
+      <div className="max-w-7xl mx-auto bg-blue-50 rounded-3xl shadow-lg p-6 sm:p-8 md:p-10 relative overflow-hidden">
+        <div className="flex justify-between items-center mb-6 sm:mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
             Guides to help you grow
           </h2>
         </div>
@@ -55,7 +54,7 @@ export default function GuidesSlider() {
         {showLeft && (
           <button
             onClick={() => scroll("left")}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black transition-all duration-300 z-10"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-2 sm:p-3 rounded-full hover:bg-black transition-all duration-300 z-10"
           >
             ◀
           </button>
@@ -64,7 +63,7 @@ export default function GuidesSlider() {
         {showRight && (
           <button
             onClick={() => scroll("right")}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black transition-all duration-300 z-10"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-2 sm:p-3 rounded-full hover:bg-black transition-all duration-300 z-10"
           >
             ▶
           </button>
@@ -72,20 +71,20 @@ export default function GuidesSlider() {
 
         <div
           ref={containerRef}
-          className="flex space-x-6 overflow-x-auto scrollbar-hide scroll-smooth"
+          className="flex space-x-4 sm:space-x-6 overflow-x-auto scrollbar-hide scroll-smooth"
         >
           {guides.map((guide, i) => (
             <div
               key={i}
-              className="flex-shrink-0 w-80 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
+              className="flex-shrink-0 w-64 sm:w-72 md:w-80 lg:w-96 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
             >
               <img
                 src={guide.image}
                 alt={guide.title}
-                className="w-full h-56 object-cover"
+                className="w-full h-40 sm:h-48 md:h-56 object-cover"
               />
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-gray-800">
+              <div className="p-3 sm:p-4">
+                <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-800">
                   {guide.title}
                 </h3>
               </div>
