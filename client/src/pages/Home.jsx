@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import backgroundImage from '../assets/civer.png';
 import Navbar from '../components/Navbar.jsx';
 import GuidesSlider from '../components/GuidesSlider.jsx';
+import Footer from "../components/Footer";
+
 
 import ProgrammingIcon from '../assets/program.png';
 import GraphicsIcon from '../assets/web-design.png';
@@ -278,6 +280,6 @@ export default function Home() {
     </button>
   </div>
 </div>
-
+<Footer />
 </div>
   )};

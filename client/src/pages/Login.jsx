@@ -45,13 +45,8 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex flex-col text-gray-800">
-      {/* Navbar */}
       <Navbar />
-
-      {/* Main container */}
       <div className="flex flex-col lg:flex-row flex-1">
-        
-        {/* Mobile/Tablet Hero Section */}
         <div
           className="flex lg:hidden w-full items-center justify-center p-6 relative h-48 sm:h-64"
           style={{
@@ -66,8 +61,6 @@ export default function Login() {
             <p className="text-sm sm:text-base mt-1">Login to your account to get started!</p>
           </div>
         </div>
-
-        {/* Left Image Section for Desktop */}
         <div
           className="hidden lg:flex lg:w-1/2 items-center justify-center p-8 relative"
           style={{
@@ -87,15 +80,11 @@ export default function Login() {
             <div className="mt-6 text-lg font-medium">Skill Sync</div>
           </div>
         </div>
-
-        {/* Right Login Section */}
         <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-8 bg-white">
           <div className="max-w-md w-full">
             <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
               Login using
             </h2>
-
-            {/* Social Login Buttons */}
             <div className="flex flex-col sm:flex-row sm:space-x-4 mb-6 space-y-4 sm:space-y-0">
               <button
                 type="button"
@@ -113,11 +102,7 @@ export default function Login() {
                 Login with GitHub
               </button>
             </div>
-
-            {/* OR Separator */}
             <div className="text-center mb-4 text-gray-500 font-medium">OR</div>
-
-            {/* Email Login */}
             <h3 className="text-lg sm:text-xl font-bold mb-4 text-center">
               Login with Email
             </h3>
@@ -140,21 +125,17 @@ export default function Login() {
                 className="w-full rounded-md border border-gray-300 px-4 py-2 sm:py-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500"
                 placeholder="Password"
               />
-
               <div className="flex justify-end text-sm">
                 <a href="/forgot" className="text-blue-600 hover:text-blue-700">
-                  Forgot Password?
+                Forgot Password?
                 </a>
               </div>
-
               <button
                 type="submit"
-                className="w-full py-2 sm:py-3 px-4 rounded-md font-semibold text-white bg-gradient-to-r from-teal-400 to-blue-600 hover:from-teal-500 hover:to-blue-700 transition shadow-lg"
-              >
+                className="w-full py-2 sm:py-3 px-4 rounded-md font-semibold text-white bg-gradient-to-r from-teal-400 to-blue-600 hover:from-teal-500 hover:to-blue-700 transition shadow-lg">
                 Login
               </button>
             </form>
-
             <p className="text-center text-sm text-gray-600 mt-4 sm:mt-6">
               Don’t have an account?{" "}
               <a href="/signup" className="font-bold text-blue-600 hover:text-blue-700">
