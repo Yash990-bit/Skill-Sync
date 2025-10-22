@@ -5,7 +5,6 @@ import Navbar from '../components/Navbar.jsx';
 import GuidesSlider from '../components/GuidesSlider.jsx';
 import Footer from "../components/Footer";
 
-
 import ProgrammingIcon from '../assets/program.png';
 import GraphicsIcon from '../assets/web-design.png';
 import DigitalMarketingIcon from '../assets/social-media-marketing.png';
@@ -81,8 +80,7 @@ export default function Home() {
       <div className="relative min-h-[500px] flex-shrink-0 flex flex-col items-start justify-center text-white">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${backgroundImage})` }}
-        >
+          style={{ backgroundImage: `url(${backgroundImage})` }}>
           <div className="absolute inset-0 bg-black opacity-60"></div>
         </div>
 
@@ -103,64 +101,63 @@ export default function Home() {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
                 strokeWidth={2}
-              >
+                >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
               </svg>
             </button>
           </div>
           <div className="flex flex-wrap gap-4">
-            {[
-              { name: 'website development', link: '/category/web-dev' },
-              { name: 'architecture & interior design', link: '/category/design' },
-              { name: 'UGC videos', link: '/category/ugc-videos' },
-              { name: 'video editing', link: '/category/video-editing' },
-              { name: 'vibe coding', link: '/category/vibe-coding', new: true },
-            ].map((category) => (
-              <Link
-                key={category.name}
-                to={category.link}
-                className="flex items-center space-x-2 px-5 py-3 border border-gray-600 rounded-full text-sm font-medium hover:bg-gray-700 transition duration-200">
-                <span>{category.name}</span>
-                {category.new}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 ml-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}>
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
+          {[
+          { name: 'website development', link: '/category/web-dev' },
+          { name: 'architecture & interior design', link: '/category/design' },
+          { name: 'UGC videos', link: '/category/ugc-videos' },
+          { name: 'video editing', link: '/category/video-editing' },
+          { name: 'vibe coding', link: '/category/vibe-coding', new: true },
+          ].map((category) => (
+          <Link
+            key={category.name}
+            to={category.link}
+            className="flex items-center space-x-2 px-5 py-3 border border-gray-600 rounded-full text-sm font-medium hover:bg-gray-700 transition duration-200">
+            <span>{category.name}</span>
+            {category.new}
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-4 w-4 ml-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}>
+            <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+        </Link>
+    ))}
+    </div>
+  </div>
+</div>
       
       <div className="bg-white py-12 px-8 md:px-16 w-full">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-4 text-center">
-          {topCategories.map((cat)=>(
-            <div
-              key={cat.name}
-              className="flex flex-col items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition duration-200 text-gray-700 hover:text-teal-600 group cursor-pointer">
-              <div className="mb-2 bg-gray-100 p-3 rounded-full border border-gray-200 w-12 h-12 flex items-center justify-center">
-                <img
-                  src={cat.icon}
-                  alt={`${cat.name} icon`}
-                  className="w-8 h-8 object-contain transition duration-200 group-hover:filter group-hover:brightness-100 group-hover:saturate-150 group-hover:hue-rotate-90"/>
-              </div>
-              <span className="text-sm font-medium">{cat.name}</span>
-            </div>
-          ))}
-        </div>
+      <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-4 text-center">
+        {topCategories.map((cat)=>(
+          <div
+          key={cat.name}
+          className="flex flex-col items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition duration-200 text-gray-700 hover:text-teal-600 group cursor-pointer">
+            <div className="mb-2 bg-gray-100 p-3 rounded-full border border-gray-200 w-12 h-12 flex items-center justify-center">
+          <img
+          src={cat.icon}
+          alt={`${cat.name} icon`}
+         className="w-8 h-8 object-contain transition duration-200 group-hover:filter group-hover:brightness-100 group-hover:saturate-150 group-hover:hue-rotate-90"/>
       </div>
+   <span className="text-sm font-medium">{cat.name}</span>
+  </div>
+))}
+  </div>
+</div>
       
       <div className="bg-white py-20 px-8 md:px-16 w-full">
           <div className="max-w-7xl mx-auto">
@@ -199,8 +196,7 @@ export default function Home() {
             MARKETPLACE
           </h4>
           <h3 className="text-2xl font-bold text-gray-900 mb-3">
-            5% fee after hiring
-          </h3>
+            5% fee after hiring</h3>
           <p className="text-gray-600 mb-6">
             For starting out on our global freelancer marketplace
           </p>
@@ -211,7 +207,7 @@ export default function Home() {
           </ul>
         </div>
         <button className="mt-8 border border-black bg-transparent text-sky-400 font-semibold py-3 rounded-full hover:bg-sky-200 hover:text-black transition-all duration-300 cursor-pointer">
-          Get started for free
+        Get started for free
         </button>
       </div>
       <div className="bg-white border bg-black rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-8 flex flex-col justify-between relative">
@@ -275,7 +271,7 @@ export default function Home() {
     <p className="mb-6 text-base md:text-lg text-gray-700">
       Find the best professionals and services, anytime, anywhere.
     </p>
-    <button className="px-6 py-2 md:px-8 md:py-3 bg-gray-500 text-white font-bold rounded-full text-base md:text-lg shadow-lg hover:text-black hover:scale-105 transition-transform duration-300 cursor-pointer">
+    <button className="px-6 py-2 md:px-8 md:py-3 bg-sky-300 text-white font-bold rounded-full text-base md:text-lg shadow-lg hover:text-black hover:scale-105 transition-transform duration-300 cursor-pointer">
       Join Skill Sync
     </button>
   </div>
