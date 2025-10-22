@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import backgroundImage from '../assets/civer.png';
 import Navbar from '../components/Navbar.jsx';
+import GuidesSlider from '../components/GuidesSlider.jsx';
 
 import ProgrammingIcon from '../assets/program.png';
 import GraphicsIcon from '../assets/web-design.png';
@@ -143,17 +144,15 @@ export default function Home() {
       
       <div className="bg-white py-12 px-8 md:px-16 w-full">
         <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-4 text-center">
-          {topCategories.map((cat) => (
+          {topCategories.map((cat)=>(
             <div
               key={cat.name}
-              className="flex flex-col items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition duration-200 text-gray-700 hover:text-teal-600 group cursor-pointer"
-            >
+              className="flex flex-col items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition duration-200 text-gray-700 hover:text-teal-600 group cursor-pointer">
               <div className="mb-2 bg-gray-100 p-3 rounded-full border border-gray-200 w-12 h-12 flex items-center justify-center">
                 <img
                   src={cat.icon}
                   alt={`${cat.name} icon`}
-                  className="w-8 h-8 object-contain transition duration-200 group-hover:filter group-hover:brightness-100 group-hover:saturate-150 group-hover:hue-rotate-90"
-                />
+                  className="w-8 h-8 object-contain transition duration-200 group-hover:filter group-hover:brightness-100 group-hover:saturate-150 group-hover:hue-rotate-90"/>
               </div>
               <span className="text-sm font-medium">{cat.name}</span>
             </div>
@@ -186,7 +185,7 @@ export default function Home() {
 </div>
 ))}
 </div>
-<div className="bg-gray-50 py-20 px-8 md:px-16 w-full">
+<div className=" py-20 px-8 md:px-16 w-full">
   <div className="max-w-7xl mx-auto text-center">
     <h2 className="text-4xl font-bold text-gray-900 mb-16">
       Clients only pay after hiring
@@ -263,6 +262,7 @@ export default function Home() {
 </div>
 </div>
 </div>
+<GuidesSlider />
 </div>
   );
 }
