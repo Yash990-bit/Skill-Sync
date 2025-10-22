@@ -54,10 +54,8 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex flex-col text-gray-800">
-      {/* 🎯 Use the imported Navbar component here */}
       <Navbar /> 
-
-      <div className="flex flex-1">
+      <div className="flex flex-col lg:flex-row flex-1">
         <div
           className="hidden lg:flex lg:w-1/2 items-center justify-center p-12 text-white shadow-xl relative"
           style={{
@@ -71,22 +69,22 @@ export default function Login() {
             <h1 className="text-6xl font-extrabold leading-tight tracking-tight">
               Welcome Back
             </h1>
-            <p className="mt-4 text-xl font-light">
+            <p className="mt-4 text-xl md:text-xl font-light">
               Login to your account to get started!
             </p>
             <div className="mt-10 flex items-center">
-              <span className="text-xl font-medium">Skill Sync</span>
+              <span className="mt-6 text-lg font-medium">Skill Sync</span>
             </div>
           </div>
         </div>
 
         <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white">
           <div className="max-w-md w-full">
-            <h2 className="text-3xl font-bold text-center mb-10">
+            <h2 className="text-1xl sm:text-3xl font-medium text-center mb-8">
               Login using
             </h2>
 
-            <div className="flex space-x-4 mb-8">
+            <div className="flex flex-col sm:flex-row sm:space-x-4 mb-6 space-y-4 sm:space-y-0">
               <button
                 type="button"
                 onClick={() => handleSocialLogin("Google")}
@@ -106,7 +104,7 @@ export default function Login() {
 
             <div className="text-center mb-6 text-gray-500 font-medium">OR</div>
 
-            <h3 className="text-xl font-bold mb-4">Login with Email</h3>
+            <h3 className="text-lg sm:text-xl font-medium mb-4 text-center">Login with Email</h3>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
@@ -132,18 +130,14 @@ export default function Login() {
               </div>
 
               <div className="flex justify-end text-sm">
-                <a
-                  href="/forgot"
-                  className="text-blue-600 hover:text-blue-700"
-                >
+                <a href="/forgot"
+                  className="text-black hover:text-blue-700">
                   Forgot Password?
                 </a>
               </div>
-
               <button
                 type="submit"
-                className="w-full py-3 px-4 rounded-md font-semibold text-white bg-gradient-to-r from-teal-400 to-blue-600 hover:from-teal-500 hover:to-blue-700 transition shadow-lg"
-              >
+                className="w-full py-3 px-4 rounded-md font-semibold text-white bg-gradient-to-r from-teal-400 to-blue-600 hover:from-teal-500 hover:to-blue-700 transition shadow-lg">
                 Login
               </button>
             </form>
@@ -152,7 +146,7 @@ export default function Login() {
               Don’t have an account?{" "}
               <a
                 href="/signup"
-                className="font-bold text-blue-600 hover:text-blue-700"
+                className="font-bold text-black hover:text-blue-700"
               >
                 Sign up
               </a>
