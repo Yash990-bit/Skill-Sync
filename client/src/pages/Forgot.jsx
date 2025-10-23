@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { auth } from "../context/firebase.js";
 import { sendPasswordResetEmail } from "firebase/auth";
-import { Link } from "react-router-dom"; // <-- import Link
+import { Link } from "react-router-dom"; 
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -18,25 +18,21 @@ export default function ForgotPassword() {
     } catch (err) {
       setError(err.message);
     }
-  };
-
+  }
   return (
     <div className="min-h-screen bg-gray-100">
       <header className="flex justify-between items-center p-4 sm:p-6 bg-white shadow-md">
-        <div className="text-2xl font-bold text-blue-600">SkillSync</div>
+        <div className="text-2xl font-bold text-black">SkillSync</div>
         <div className="space-x-4">
           <Link
             to="/"
-            className="px-4 py-2 font-semibold text-blue-600 border border-blue-600 rounded hover:bg-blue-50 transition"
-          >
+            className="px-4 py-2 font-semibold text-blue-600 border border-black rounded hover:bg-blue-200 transition">
             Login
           </Link>
           <Link
             to="/signup"
-            className="px-4 py-2 font-semibold text-white bg-blue-600 rounded hover:bg-blue-700 transition"
-          >
-            Sign Up
-          </Link>
+            className="px-4 py-2 font-semibold text-white bg-blue-400 rounded hover:bg-blue-700 transition">
+            Sign Up</Link>
         </div>
       </header>
 
@@ -58,7 +54,7 @@ export default function ForgotPassword() {
             />
             <button
               type="submit"
-              className="w-full py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition"
+              className="w-full py-3 bg-blue-400 text-white font-semibold rounded-md hover:bg-blue-300 transition"
             >
               Next
             </button>
@@ -69,7 +65,7 @@ export default function ForgotPassword() {
 
           <button
             onClick={() => window.history.back()}
-            className="mt-4 w-full text-gray-600 hover:text-gray-800 text-center"
+            className="mt-5 w-full py-3 text-gray-600 hover:text-gray-800 hover:bg-blue-100 rounded-md transition text-center"
           >
             Back
           </button>
