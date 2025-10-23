@@ -89,7 +89,7 @@ export default function Login() {
               <button
                 type="button"
                 onClick={() => handleSocialLogin("Google")}
-                className="flex-1 flex items-center justify-center gap-2 border border-gray-300 py-2 sm:py-3 px-4 rounded-lg font-medium text-gray-700 hover:bg-gray-50 transition"
+                className="flex-1 flex items-center justify-center gap-2 border border-gray-300 py-2 sm:py-3 px-4 rounded-lg font-medium text-gray-700 hover:bg-gray-50 transition cursor-pointer"
               >
                 Sign in with Google
               </button>
@@ -97,8 +97,7 @@ export default function Login() {
               <button
                 type="button"
                 onClick={() => handleSocialLogin("GitHub")}
-                className="flex-1 flex items-center justify-center py-2 sm:py-3 px-4 rounded-lg font-medium text-white bg-black hover:bg-gray-800 transition"
-              >
+                className="flex-1 flex items-center justify-center py-2 sm:py-3 px-4 rounded-lg font-medium text-white bg-black hover:bg-gray-800 transition cursor-pointer">
                 Login with GitHub
               </button>
             </div>
@@ -106,7 +105,6 @@ export default function Login() {
             <h3 className="text-lg sm:text-xl font-bold mb-4 text-center">
               Login with Email
             </h3>
-
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
               <input
                 type="email"
