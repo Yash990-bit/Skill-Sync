@@ -5,7 +5,8 @@ import Home from "../pages/Home";
 import Dashboard from "../pages/Dashboard";
 import Profile from "../pages/Profile";
 import Details from "../pages/Details";
-import Signup from "../pages/Signup";
+import Signup from "../pages/Signup"
+import Forgot from "../pages/Forgot";
 
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
             <Route path="/details" element={<Details />} />
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/signup" element={<Signup/>}/>
+            <Route path="/forgot" element={<Forgot/>}/>
           </Routes>
         </div>
       </div>
