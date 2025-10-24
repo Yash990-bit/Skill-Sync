@@ -3,12 +3,18 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 export default function Dashboard() {
-  const [user, setUser] = useState({ name: "", role: "" });
   const [stats, setStats] = useState({ assigned: 0, completed: 0, pending: 0 })
   const [projects, setProjects] = useState([]);
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const [user, setUser] = useState({ name: "YourName", role: "" })
+
+
+  useEffect(() => {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  if (storedUser) setUser(storedUser);
+}, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,10 +40,13 @@ export default function Dashboard() {
     fetchData()
   }, []);
   const handleRoleChange = (e) => {
-    const newRole = e.target.value;
-    setUser((prev) => ({ ...prev, role: newRole }));
-    localStorage.setItem("user", JSON.stringify({ ...user, role: newRole }));
-  }
+  const newRole = e.target.value;
+  setUser(prev => {
+    const updatedUser = { ...prev, role: newRole };
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+    return updatedUser;
+  });
+};
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -46,13 +55,10 @@ export default function Dashboard() {
     )}
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar />
+      <Navbar name={user.name} />
       <div className="max-w-7xl mx-auto px-6 py-10">
         <div className="mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
-            Welcome, {user.name || "User"}!
-          </h1>
-
+          <h1 className="text-3xl font-bold">Welcome, {user.name}! <span className="text-gray-500 text-sm">({user.role || "Role not set"})</span></h1>
           <div>
             <label className="text-gray-500 mr-2 font-medium">Role:</label>
             <select
@@ -180,4 +186,4 @@ export default function Dashboard() {
     </div>
   </div>
 </div>
-  )}
+)}
