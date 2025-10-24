@@ -155,21 +155,29 @@ export default function Dashboard() {
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold text-gray-700 mb-4">Notifications</h2>
-          <div className="bg-white rounded-xl shadow p-4">
-            {notifications.length > 0 ? (
-              notifications.map((n) => (
-                <div key={n.id} className="p-3 mb-2 bg-gray-100 rounded-lg">
-                  <p>{n.message}</p>
-                  <p className="text-xs text-gray-400 mt-1">{n.date}</p>
-                </div>
-              ))
-            ) : (
-              <p className="text-gray-500 text-center">No new notifications.</p>
-            )}
+  <h2 className="text-2xl font-bold text-gray-700 mb-4">Notifications</h2>
+  <div className="bg-white rounded-xl shadow p-4">
+    {notifications.length > 0 ? (
+      notifications.map((n) => (
+        <div key={n.id} className="p-3 mb-2 bg-gray-100 rounded-lg flex justify-between items-center">
+          <div>
+            <p>{n.message}</p>
+            <p className="text-xs text-gray-400 mt-1">{n.date}</p>
           </div>
-        </div>
+          <button
+            className="text-red-500 hover:text-red-700 font-bold"
+            onClick={async () => {
+              try {
+                await fetch(`http://localhost:5000/api/notifications/${n.id}`, { method: "DELETE" });
+                setNotifications((prev) => prev.filter((notif) => notif.id !== n.id));
+              } catch (err) {
+                console.error("Failed to delete notification:", err)}}}>
+                ❌
+              </button>
+          </div>
+          ))):(<p className="text-gray-500 text-center">No new notifications.</p>)}
       </div>
     </div>
-  );
-}
+  </div>
+</div>
+  )}
