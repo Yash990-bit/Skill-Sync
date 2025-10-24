@@ -14,38 +14,36 @@ export default function Dashboard() {
     const fetchData = async () => {
       try {
         const storedUser = JSON.parse(localStorage.getItem("user"))
-        if (storedUser) setUser(storedUser)
-        const statsRes = await fetch("/api/dashboard/stats")
-        const projectsRes = await fetch("/api/projects/active")
-        const notifRes = await fetch("/api/notifications")
+        if (!storedUser) return 
+
+        setUser(storedUser)
+        const userId = storedUser.id
+
+        const statsRes = await fetch(`http://localhost:5000/api/dashboard/stats/${userId}`)
+        const projectsRes = await fetch(`http://localhost:5000/api/projects/active/${userId}`)
+        const notifRes = await fetch(`http://localhost:5000/api/notifications/${userId}`)
 
         setStats(await statsRes.json());
         setProjects(await projectsRes.json());
         setNotifications(await notifRes.json());
       } catch (err) {
-        console.error("Error fetching dashboard data:", err);
+        console.error("Error fetching dashboard data:", err)
       } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+        setLoading(false)
+      }}
+    fetchData()
   }, []);
-
   const handleRoleChange = (e) => {
     const newRole = e.target.value;
     setUser((prev) => ({ ...prev, role: newRole }));
     localStorage.setItem("user", JSON.stringify({ ...user, role: newRole }));
-  };
-
+  }
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <p className="text-gray-500 text-lg">Loading dashboard...</p>
       </div>
-    );
-  }
-
+    )}
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />

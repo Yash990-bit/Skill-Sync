@@ -15,6 +15,7 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [role, setRole] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +23,30 @@ export default function Signup() {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       await updateProfile(user, { displayName: name });
-       navigate("/dashboard")
+
+      const res = await fetch("http://localhost:5000/api/auth/create-user", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firebaseId: user.uid, 
+        name,
+        email,
+        role:role || "Freelancer",
+      }),
+    });
+
+    if (!res.ok) throw new Error("Failed to create MySQL user");
+    const mysqlUser = await res.json();
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        id: mysqlUser.id,
+        name: mysqlUser.name,
+        role: mysqlUser.role,
+      }))
+
+      navigate("/dashboard")
     } catch (error) {
       console.error(error);
       alert(error.message);
@@ -116,6 +140,16 @@ export default function Signup() {
                 className="w-full rounded-md border border-gray-300 px-4 py-2 sm:py-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500"
                 placeholder="Full Name"
               />
+              <select
+                  required
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 sm:py-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                  <option value="">Select your role</option>
+                  <option value="Freelancer">Freelancer</option>
+                  <option value="Client">Client</option>
+              </select>
+
               <input
                 type="email"
                 required

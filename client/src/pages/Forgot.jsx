@@ -7,16 +7,21 @@ export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
     setError("");
+    setLoading(true);
     try {
       await sendPasswordResetEmail(auth, email);
       setMessage("Password reset link sent! Check your email.");
     } catch (err) {
       setError(err.message);
+    }finally{
+      setLoading(false);
     }
   }
   return (
@@ -42,7 +47,6 @@ export default function ForgotPassword() {
           <p className="text-sm text-gray-600 mb-6 text-center">
             We'll send a verification link to your email if it matches an existing account.
           </p>
-
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="email"
@@ -54,8 +58,9 @@ export default function ForgotPassword() {
             />
             <button
               type="submit"
-              className="w-full py-3 bg-blue-400 text-white font-semibold rounded-md hover:bg-blue-300 transition"
-            >
+              disabled={loading}
+              className={`w-full py-3 rounded-md font-semibold text-white transition ${
+              loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-400 hover:bg-blue-300"}`}>
               Next
             </button>
           </form>
@@ -67,7 +72,7 @@ export default function ForgotPassword() {
             onClick={() => window.history.back()}
             className="mt-5 w-full py-3 text-gray-600 hover:text-gray-800 hover:bg-blue-100 rounded-md transition text-center"
           >
-            Back
+          {loading ? "Sending..." : "Next"}
           </button>
         </div>
       </div>

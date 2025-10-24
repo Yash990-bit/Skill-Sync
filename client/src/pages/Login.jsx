@@ -7,17 +7,33 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import Navbar from "../components/Navbar.jsx";
+import { useNavigate } from "react-router-dom"
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      alert(`Email login successful! Welcome ${user.email}`);
+      const firebaseUser = userCredential.user;
+
+      const res = await fetch(`http://localhost:5000/api/auth/get-user?email=${firebaseUser.email}`);
+      if (!res.ok) throw new Error("Failed to fetch MySQL user");
+      const mysqlUser = await res.json();
+
+      localStorage.setItem(
+      "user",
+      JSON.stringify({
+        id: mysqlUser.id,
+        name: mysqlUser.name,
+        role: mysqlUser.role,
+      })
+    );
+
+    navigate("/dashboard");
     } catch (error) {
       console.error(error);
       alert(error.message);
@@ -30,18 +46,32 @@ export default function Login() {
   };
 
   useEffect(() => {
-    getRedirectResult(auth)
-      .then((result) => {
-        if (result) {
-          const user = result.user;
-          alert(`Login successful!\nName: ${user.displayName}\nEmail: ${user.email}`);
-        }
-      })
-      .catch((error) => {
-        console.error("Redirect login error:", error);
-        if (error.code !== "auth/no-auth-event") alert(error.message);
-      });
-  }, []);
+  getRedirectResult(auth)
+    .then(async (result) => {
+      if (result) {
+        const firebaseUser = result.user;
+
+        const res = await fetch(`http://localhost:5000/api/auth/get-user?email=${firebaseUser.email}`);
+        if (!res.ok) throw new Error("Failed to fetch MySQL user");
+        const mysqlUser = await res.json();
+
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            id: mysqlUser.id,
+            name: mysqlUser.name,
+            role: mysqlUser.role,
+          })
+        );
+
+        navigate("/dashboard");
+      }
+    })
+    .catch((error) => {
+      console.error("Redirect login error:", error);
+      if (error.code !== "auth/no-auth-event") alert(error.message);
+    })
+}, [])
 
   return (
     <div className="min-h-screen flex flex-col text-gray-800">
